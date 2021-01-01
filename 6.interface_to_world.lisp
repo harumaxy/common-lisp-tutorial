@@ -11,11 +11,7 @@
 (defun simple-game-repl ()
   (loop (print (eval (read)))))
 
-;; (defun game-repl ()
-;;   (let ((cmd (game-read)))
-;;     (unless (eq (car cmd) 'quit)
-;;             (game-print (game-eval cmd))
-;;             (game-repl))))
+
 
 ; game-read
 ; (look) じゃなく look で認識するようにする
@@ -62,3 +58,11 @@
 ; coerce : value -> ~encode:symbole -> new_value
 ; string -> char list にして修正してから、char list -> string に戻している
 ; 最後に princ  で出力
+
+(defun game-repl ()
+  (let ((cmd (game-read)))
+    (unless (eq (car cmd) 'quit)
+            (game-print (game-eval cmd))
+            (game-repl))))
+
+(game-repl)
